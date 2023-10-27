@@ -1,0 +1,61 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>JSON Conversion</title>#}
+{#</head>#}
+{#<body>#}
+{#    <label for="jsonInput">Enter JSON string:</label>#}
+{#    <input type="text" id="jsonInput" placeholder='{"animal":"cat"}'>#}
+{#    <button onclick="convertToJson()">Convert</button>#}
+{##}
+{#    <p>Output: <span id="output"></span></p>#}
+{##}
+{#    <script>#}
+{#        function convertToJson() {#}
+{#            const jsonString = document.getElementById('jsonInput').value;#}
+{#            try {#}
+{#                const obj = eval(`(${jsonString})`);#}
+{#                document.getElementById('output').textContent = obj.animal;#}
+{#            } catch (e) {#}
+{#                document.getElementById('output').textContent = "Invalid JSON";#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsafe JSON Conversion</title>
+</head>
+<body>
+    <label for="animalInput">Enter code:</label>
+    <input type="text" id="animalInput" placeholder='cat'>
+    <button onclick="convertToJson()">Convert</button>
+
+    <p>Output: <span id="output"></span></p>
+    <p>test</p>
+
+    <script>
+        function convertToJson() {
+            const inputValue = document.getElementById('animalInput').value;
+
+            // Very unsafe construction of JSON-like string
+            const jsonString = `{"animal": '${inputValue}'}`;
+
+            try {
+                const obj = eval(`(${jsonString})`);
+                document.getElementById('output').textContent = obj.animal;
+            } catch (e) {
+                document.getElementById('output').textContent = "Error in processing input";
+            }
+        }
+    </script>
+</body>
+</html>
+
