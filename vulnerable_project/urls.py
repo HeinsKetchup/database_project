@@ -21,6 +21,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
+    # path('login/', views.login, name='login'),
     path('json/', views.json_convert, name='json'),
+    path('registration/', views.make_user, name='registration'),
+    path('login/', views.login_view, name='login'),
+    path('home/', views.home, name='home'),
+    path('admin_home/', views.admin_home, name='admin_home'),
+
 ]

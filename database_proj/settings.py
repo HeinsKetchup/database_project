@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vulnerable_project.apps.VulnerableProjectConfig',
+    'vulnerable_project',
+    'database_proj',
 ]
 
 MIDDLEWARE = [

