@@ -24,3 +24,5 @@ When the input is provided, the constructed string becomes:
 {"animal": ''}); alert('bad'); ({'dummy':''}
 
 The eval() function will interpret and execute the alert('bad'); portion, showing the alert.
+
+test2","account_type":"administrator

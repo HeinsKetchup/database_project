@@ -51,6 +51,38 @@ def make_user(request):
     return render(request, 'user_registration.html', )
 
 @csrf_exempt
+def safe_register(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user_dict = {
+                "account_type": "user",
+                "username": username,
+                "password": password
+            }
+
+            try:
+
+                new_user = InsecureUser(user_data=user_dict)
+                new_user.save()
+
+                request.session['user_id'] = new_user.id
+                return redirect('login')
+
+            except Exception as e:
+
+                return JsonResponse({"status": "Error", "message": str(e)}, status=400)
+
+    form = UserForm()
+
+    return render(request, 'user_registration.html', {'form': form})
+
+@csrf_exempt
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
